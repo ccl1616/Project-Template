@@ -6,6 +6,7 @@ from fastapi import Request
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 # Middleware to log requests before and after
 async def log_requests(request: Request, call_next):
     logger.info(f"Request: {request.method} {request.url}")
@@ -18,6 +19,7 @@ async def log_requests(request: Request, call_next):
 
     # Log after the request is processed
     process_time = time.time() - start_time
-    logger.info(f"Response status: {response.status_code} | Time: {process_time:.4f}s")
+    logger.info(f"Response status: {response.status_code} \
+                 | Time: {process_time:.4f}s")
 
     return response

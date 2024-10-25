@@ -4,6 +4,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+
 # currently not used
 class ResearchPaper(BaseModel):
     paper_title: Optional[str] = None

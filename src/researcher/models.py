@@ -1,6 +1,7 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Column, Integer, String
 
 from database import Base
+
 
 class ResearchProfile(Base):
     __tablename__ = "ResearchProfile"
