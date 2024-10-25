@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from researcher.router import router
 from fastapi_pagination import add_pagination
+from middleware_logging import log_requests
+from starlette.middleware.base import BaseHTTPMiddleware
 
 app = FastAPI()
 
@@ -13,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(BaseHTTPMiddleware, dispatch=log_requests)
 
 
 @app.get("/")
