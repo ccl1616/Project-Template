@@ -4,6 +4,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+# currently not used
 class ResearchPaper(BaseModel):
     paper_title: Optional[str] = None
     paper_link: Optional[str] = None
@@ -18,4 +19,4 @@ class ResearchProfile(BaseModel):
     title: Optional[str] = None
     age: Optional[int] = None
     sex: Optional[str] = None
-    paper: Optional[list[ResearchPaper]] = None
+#   paper: Optional[list[ResearchPaper]] = None

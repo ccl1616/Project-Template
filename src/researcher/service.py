@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from researcher.models import ResearchProfile
 
-def get_research_profile(db: Session, researcher_id: int):
+def get_research_profile_by_id(db: Session, researcher_id: int):
     return db.query(ResearchProfile).filter(ResearchProfile.id == researcher_id).first()
 
 
@@ -24,5 +24,7 @@ def create_research_profile(db: Session, research_profile: ResearchProfile):
     return new_research_profile
 
 def delete_research_profile_by_id(db: Session, researcher_id: int):
-    return db.query(ResearchProfile).filter(ResearchProfile.id == researcher_id).delete()
+    db.query(ResearchProfile).filter(ResearchProfile.id == researcher_id).delete()
+    db.commit()
+    return
 
