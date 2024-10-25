@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from fastapi_pagination import Page
-from researcher.schemas import ResearchProfile
+from src.researcher.schemas import ResearchProfile
 from sqlalchemy.orm import Session
 from . import service
-from database import get_db
+from src.database import get_db
 
 router = APIRouter()
 
