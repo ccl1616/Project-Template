@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi_pagination import Page, paginate
 from researcher.schemas import ResearchProfile
 from sqlalchemy.orm import Session
 from typing import List
@@ -7,9 +8,9 @@ from database import get_db
 
 router = APIRouter()
 
-@router.get("/researchers", response_model=List[ResearchProfile])
-async def get_all_researchers(db: Session = Depends(get_db)):
-    return service.get_all_research_profiles(db)
+@router.get("/researchers")
+async def get_all_researchers(db: Session = Depends(get_db)) -> Page[ResearchProfile]:
+    return paginate(service.get_all_research_profiles(db))
     
 
 @router.get("/researcher/{researcher_id}")
