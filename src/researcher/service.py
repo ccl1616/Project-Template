@@ -10,7 +10,9 @@ def get_research_profile_by_id(db: Session, researcher_id: int):
 
 
 def get_all_research_profiles(db: Session, skip: int = 0, limit: int = 100):
-    return paginate(db, select(ResearchProfile).order_by(ResearchProfile.id))
+    return paginate(db, select(ResearchProfile).order_by(ResearchProfile.id), additional_data={
+            "link": ""
+        })
 
 
 def create_research_profile(db: Session, research_profile: ResearchProfile):
